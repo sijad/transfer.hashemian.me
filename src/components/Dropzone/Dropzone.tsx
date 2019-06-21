@@ -1,11 +1,19 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './Dropzone.css';
+import { ID } from '../../ID';
+import { DroppedFile } from './DroppedFile';
+import { File } from './File';
 
 export function Dropzone() {
-  // const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<DroppedFile[]>([]);
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    alert(acceptedFiles[0].name);
+    const newFiles = acceptedFiles.map(f => {
+      (f as DroppedFile).id = ID();
+      return f;
+    }) as DroppedFile[];
+
+    setFiles(files => [...files, ...newFiles]);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -19,6 +27,9 @@ export function Dropzone() {
           {'فایل‌ها را اینجا رها کنید یا برای انتخاب اینجا کلیک کنید'}
         </span>
       )}
+      {files.map(f => (
+        <File file={f} key={`${f.id}`} />
+      ))}
     </div>
   );
 }
