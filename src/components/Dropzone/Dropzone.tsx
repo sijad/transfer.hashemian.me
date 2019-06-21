@@ -4,7 +4,6 @@ import './Dropzone.css';
 import { ID } from '../../ID';
 import { DroppedFile } from './DroppedFile';
 import { File } from './File';
-import { Url } from './Url';
 
 export function Dropzone() {
   const [files, setFiles] = useState<DroppedFile[]>([]);
@@ -25,7 +24,7 @@ export function Dropzone() {
       <div className="dropzone-top" />
       <div {...rootProps}>
         <input {...getInputProps()} />
-        <span className="comment">
+        <span className="comment mb-2">
           {'# فایل‌ها را اینجا رها نمایید، یا '}
           <button className="browse-link" onClick={onClick} type="button">
             {'مرور فایل‌ها'}
@@ -35,7 +34,6 @@ export function Dropzone() {
         {files.map(f => (
           <File file={f} key={`${f.id}`} />
         ))}
-        <Url url="http://google.com" />
       </div>
     </div>
   );

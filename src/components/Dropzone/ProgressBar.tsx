@@ -5,5 +5,13 @@ interface Props {
 }
 
 export function ProgressBar({ progress }: Props) {
-  return <div />;
+  const percent = `${progress}%`;
+  return (
+    <div className="progress-bar">
+      <div className="progress-bar_progress" style={{ width: percent }}>
+        {'###################################################################'}
+      </div>
+      <div className="progress-bar_percent">{percent}</div>
+    </div>
+  );
 }
