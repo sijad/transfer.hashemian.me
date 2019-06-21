@@ -1,21 +1,3 @@
-@import 'bootstrap-reboot.rtl.css';
-@import 'bootstrap-grid.rtl.css';
-@import '~vazir-font/dist/font-face.css';
-
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-input,
-textarea {
-  font-family: 'Vazir';
-}
-
 .container {
   width: auto;
   max-width: 680px;

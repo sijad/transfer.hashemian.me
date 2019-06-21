@@ -6,7 +6,7 @@ interface Props {
 
 export function Url({ url }: Props) {
   return (
-    <a href={url} target="_blank">
+    <a href={url} rel="noopener noreferrer" target="_blank">
       {url}
     </a>
   );

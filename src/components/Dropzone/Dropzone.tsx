@@ -17,27 +17,26 @@ export function Dropzone() {
     setFiles(files => [...files, ...newFiles]);
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
   const { onClick, ...rootProps } = getRootProps({ className: 'dropzone' });
 
   return (
-    <div {...rootProps}>
-      <input {...getInputProps()} />
-      {isDragActive ? (
-        <span className="note">{'فایل‌ها را اینجا رها کنید...'}</span>
-      ) : (
-        <span className="note">
-          {'فایل‌ها را اینجا رها نمایید، یا '}
+    <div>
+      <div className="dropzone-top" />
+      <div {...rootProps}>
+        <input {...getInputProps()} />
+        <span className="comment">
+          {'# فایل‌ها را اینجا رها نمایید، یا '}
           <button className="browse-link" onClick={onClick} type="button">
             {'مرور فایل‌ها'}
           </button>
           {' را انتخاب کنید'}
         </span>
-      )}
-      {files.map(f => (
-        <File file={f} key={`${f.id}`} />
-      ))}
-      <Url url="http://google.com" />
+        {files.map(f => (
+          <File file={f} key={`${f.id}`} />
+        ))}
+        <Url url="http://google.com" />
+      </div>
     </div>
   );
 }
