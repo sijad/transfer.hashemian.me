@@ -25,6 +25,7 @@ export function File({ file }: Props) {
         },
         headers: {
           X_FILENAME: file.name,
+          'content-type': file.type,
         },
       })
       .then(resp => setUrl(resp.data))
