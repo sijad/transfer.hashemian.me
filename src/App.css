@@ -1,33 +1,59 @@
-.App {
-  text-align: center;
+@import 'bootstrap-reboot.rtl.css';
+@import 'bootstrap-grid.rtl.css';
+@import '~vazir-font/dist/font-face.css';
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+input,
+textarea {
+  font-family: 'Vazir';
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.h-100 {
+  height: 100vh;
+}
+
+.dropzone {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  cursor: pointer;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-width: 2px;
+  border-radius: 2px;
+  border-color: #eeeeee;
+  border-style: dashed;
+  background-color: #fafafa;
+  color: #bdbdbd;
+  outline: none;
+  transition: border 0.24s ease-in-out;
+  cursor: pointer;
+  min-height: 150px;
 }
 
-.App-link {
-  color: #61dafb;
+.dropzone:focus {
+  border-color: #2196f3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dropzone.disabled {
+  opacity: 0.6;
+}
+
+.footer {
+  background-color: #f5f5f5;
 }
