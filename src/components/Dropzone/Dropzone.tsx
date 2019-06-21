@@ -4,6 +4,7 @@ import './Dropzone.css';
 import { ID } from '../../ID';
 import { DroppedFile } from './DroppedFile';
 import { File } from './File';
+import { Url } from './Url';
 
 export function Dropzone() {
   const [files, setFiles] = useState<DroppedFile[]>([]);
@@ -17,19 +18,26 @@ export function Dropzone() {
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { onClick, ...rootProps } = getRootProps({ className: 'dropzone' });
+
   return (
-    <div {...getRootProps({ className: 'dropzone' })}>
+    <div {...rootProps}>
       <input {...getInputProps()} />
       {isDragActive ? (
-        <span>{'فایل‌ها را اینجا رها کنید...'}</span>
+        <span className="note">{'فایل‌ها را اینجا رها کنید...'}</span>
       ) : (
-        <span>
-          {'فایل‌ها را اینجا رها کنید یا برای انتخاب اینجا کلیک کنید'}
+        <span className="note">
+          {'فایل‌ها را اینجا رها نمایید، یا '}
+          <button className="browse-link" onClick={onClick} type="button">
+            {'مرور فایل‌ها'}
+          </button>
+          {' را انتخاب کنید'}
         </span>
       )}
       {files.map(f => (
         <File file={f} key={`${f.id}`} />
       ))}
+      <Url url="http://google.com" />
     </div>
   );
 }
